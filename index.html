@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>花蓮兩天一夜旅遊行程</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Earthy Green & Warm Sand -->
+    <!-- Application Structure Plan: A two-column layout with day-selection navigation on the left and a dynamic vertical timeline on the right. This structure is chosen for its clarity and intuitive chronological flow, allowing the user to easily switch between daily schedules without clutter. -->
+    <!-- Visualization & Content Choices: The core information is the itinerary. Goal: Inform/Organize. Method: Interactive vertical timeline built with HTML/Tailwind. Interaction: JS-powered day-selector buttons to toggle visibility of daily timelines. Justification: This is the most direct and engaging way to present a chronological travel plan without needing complex charts. Recommendations are presented as clear text cards. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans TC', sans-serif;
+            background-color: #FDFBF8;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -30px;
+            top: 12px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #C7B299;
+            border: 2px solid #FDFBF8;
+        }
+        .active-day {
+            background-color: #3A5A40;
+            color: #FFFFFF;
+        }
+        .inactive-day {
+            background-color: #FFFFFF;
+            color: #3A5A40;
+        }
+    </style>
+</head>
+<body class="antialiased text-gray-800">
+
+    <div class="container mx-auto px-4 py-8 md:py-12">
+        <header class="text-center mb-10">
+            <h1 class="text-3xl md:text-4xl font-bold text-[#3A5A40]">花蓮山嵐號・夢幻二日遊</h1>
+            <p class="text-md text-gray-500 mt-2">您的專屬互動行程表 (10/3 - 10/4)</p>
+        </header>
+
+        <div class="flex flex-col md:flex-row gap-8">
+            
+            <aside class="w-full md:w-1/4">
+                <div class="sticky top-8 bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                    <h2 class="font-bold text-lg mb-4 text-[#3A5A40]">行程選擇</h2>
+                    <nav class="flex flex-row md:flex-col gap-2">
+                        <button id="btn-day1" class="day-selector w-full text-left p-3 rounded-md transition-all duration-300 active-day">第一天 (10/3)</button>
+                        <button id="btn-day2" class="day-selector w-full text-left p-3 rounded-md transition-all duration-300 inactive-day">第二天 (10/4)</button>
+                        <button id="btn-notes" class="day-selector w-full text-left p-3 rounded-md transition-all duration-300 inactive-day">旅遊小提醒</button>
+                    </nav>
+                </div>
+            </aside>
+
+            <main class="w-full md:w-3/4">
+                <div id="content-day1" class="day-content">
+                    <div class="relative pl-8 border-l-2 border-dashed border-[#C7B299]">
+                        
+                        <div class="timeline-item mb-10 relative">
+                            <div class="absolute -left-[43px] top-1.5 text-2xl">🚌</div>
+                            <p class="font-semibold text-sm text-[#A08C75]">08:00</p>
+                            <h3 class="text-xl font-bold text-[#3A5A40] mt-1">啟程出發</h3>
+                            <p class="text-gray-600 mt-2">於**台北火車站北二門**集合，搭乘舒適的旅遊專車，開始愉快的旅程。</p>
+                        </div>
+                        
+                        <!-- NEW: Outbound journey rest stop added -->
+                        <div class="timeline-item mb-10 relative">
+                            <div class="absolute -left-[43px] top-1.5 text-2xl">☕</div>
+                            <p class="font-semibold text-sm text-[#A08C75]">09:30 - 10:00</p>
+                            <h3 class="text-xl font-bold text-[#3A5A40] mt-1">蘇澳服務區休息</h3>
+                            <p class="text-gray-600 mt-2">旅途中第一個休息站，讓您下車活動筋骨、上洗手間，或購買零食與飲料。</p>
+                        </div>
+
+                        <div class="timeline-item mb-10 relative">
+                            <div class="absolute -left-[43px] top-1.5 text-2xl">🚶‍♂️</div>
+                            <p class="font-semibold text-sm text-[#A08C75]">11:00 - 13:00</p>
+                            <h3 class="text-xl font-bold text-[#3A5A40] mt-1">新城老街散策</h3>
+                            <p class="text-gray-600 mt-2">抵達充滿懷舊氛圍的新城老街，此處為**午餐自理時間**，您可以自由探索，品嚐在地小吃。**此費用不含**。</p>
+                            <div class="mt-4 bg-green-50 p-4 rounded-lg border border-green-200">
+                                <h4 class="font-semibold text-green-800">在地推薦</h4>
+                                <ul class="list-disc list-inside text-green-700 text-sm mt-2 space-y-1">
+                                    <li>**佳興冰果室**：檸檬汁清涼解渴，是必嚐的好滋味。</li>
+                                    <li>**練習曲文創咖啡**：在老屋裡享受一杯香醇咖啡，感受文藝氣息。</li>
+                                    <li>**新城照相館**：充滿歷史感的特色建築，適合拍照留念。</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item mb-10 relative">
+                            <div class="absolute -left-[43px] top-1.5 text-2xl">🏯</div>
+                            <p class="font-semibold text-sm text-[#A08C75]">13:30 - 14:30</p>
+                            <h3 class="text-xl font-bold text-[#3A5A40] mt-1">將軍府文創園區</h3>
+                            <p class="text-gray-600 mt-2">參觀日式宿舍群改建的文創園區，感受濃厚的歷史與藝術氣息，是拍照留念的好地方。</p>
+                        </div>
+                        
+                        <div class="timeline-item mb-10 relative">
+                            <div class="absolute -left-[43px] top-1.5 text-2xl">🏨</div>
+                            <p class="font-semibold text-sm text-[#A08C75]">15:00</p>
+                            <h3 class="text-xl font-bold text-[#3A5A40] mt-1">入住花蓮潔西艾美酒店</h3>
+                            <p class="text-gray-600 mt-2">辦理入住手續，您可以在晚餐前的時光，享受飯店的豪華設施，稍作休息與放鬆。</p>
+                        </div>
+
+                        <div class="timeline-item relative">
+                            <div class="absolute -left-[43px] top-1.5 text-2xl">🌃</div>
+                            <p class="font-semibold text-sm text-[#A08C75]">晚餐及晚間</p>
+                            <h3 class="text-xl font-bold text-[#3A5A40] mt-1">自由活動時間</h3>
+                            <p class="text-gray-600 mt-2">晚餐時間為**自由活動**，您可以自行探索花蓮市區的美食與夜景。**此費用不含**。</p>
+                             <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-amber-50 p-4 rounded-lg border border-amber-200">
+                                    <h4 class="font-semibold text-amber-800">美食探索 🍜</h4>
+                                    <ul class="list-disc list-inside text-amber-700 text-sm mt-2 space-y-1">
+                                        <li>**東大門夜市**：小吃集散地，選擇多元。</li>
+                                        <li>**老牌炸蛋蔥油餅**：在地人推薦的排隊美食。</li>
+                                        <li>**公正街包子**：經典不敗的好滋味。</li>
+                                        <li>**海埔蚵仔煎**：在地人氣排隊美食，蚵仔飽滿鮮甜。</li>
+                                        <li>**炸彈蔥油餅**：(黃車)另一家知名店家，口感酥脆不油膩。</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-sky-50 p-4 rounded-lg border border-sky-200">
+                                    <h4 class="font-semibold text-sky-800">夜間景點 ✨</h4>
+                                    <ul class="list-disc list-inside text-sky-700 text-sm mt-2 space-y-1">
+                                        <li>**舊鐵道文化商圈**：文創小店林立，氛圍悠閒。</li>
+                                        <li>**花蓮文創園區**：夜間點燈後別有風味。</li>
+                                        <li>**松園別館**：俯瞰市區夜景的絕佳地點。</li>
+                                        <li>**七星潭**：夜晚在海邊聽海浪聲，欣賞月光海。</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div id="content-day2" class="day-content hidden">
+                    <div class="relative pl-8 border-l-2 border-dashed border-[#C7B299]">
+                        
+                        <!-- New timeline item for transportation to the station -->
+                        <div class="timeline-item mb-10 relative">
+                            <div class="absolute -left-[43px] top-1.5 text-2xl">🚕</div>
+                            <p class="font-semibold text-sm text-[#A08C75]">早上</p>
+                            <h3 class="text-xl font-bold text-[#3A5A40] mt-1">前往花蓮火車站</h3>
+                            <p class="text-gray-600 mt-2">從花蓮潔西艾美酒店到火車站，建議搭乘計程車或叫車服務（車程約5-10分鐘），快速又方便；若想散步，步行約20-25分鐘可達。</p>
+                        </div>
+
+                        <div class="timeline-item mb-10 relative">
+                            <div class="absolute -left-[43px] top-1.5 text-2xl">🎟️</div>
+                            <p class="font-semibold text-sm text-[#A08C75]">09:10 - 09:30</p>
+                            <h3 class="text-xl font-bold text-[#3A5A40] mt-1">報到與準備</h3>
+                            <p class="text-gray-600 mt-2">前往雄獅旅遊位於花蓮火車站的門市報到，並領取您的山嵐號紀念車票。</p>
+                        </div>
+
+                        <div class="timeline-item mb-10 relative">
+                            <div class="absolute -left-[43px] top-1.5 text-2xl">🚂</div>
+                            <p class="font-semibold text-sm text-[#A08C75]">10:01</p>
+                            <h3 class="text-xl font-bold text-[#3A5A40] mt-1">搭乘山嵐號觀光列車</h3>
+                            <p class="text-gray-600 mt-2">登上期待已久的山嵐號，列車準時從花蓮站出發。準備好迎接一場視覺與味覺的雙重饗宴。</p>
+                        </div>
+
+                        <div class="timeline-item mb-10 relative">
+                            <div class="absolute -left-[43px] top-1.5 text-2xl">🍽️</div>
+                            <p class="font-semibold text-sm text-[#A08C75]">列車行駛途中</p>
+                            <h3 class="text-xl font-bold text-[#3A5A40] mt-1">列車體驗與頂級饗宴</h3>
+                            <p class="text-600 mt-2">在列車上，您將體驗獨特的「共鳴室」香氛，並享受由頂級主廚設計的私廚料理。**此費用包含第二天午餐與下午茶**。</p>
+                        </div>
+
+                        <div class="timeline-item mb-10 relative">
+                            <div class="absolute -left-[43px] top-1.5 text-2xl">🌾</div>
+                            <p class="font-semibold text-sm text-[#A08C75]">13:21</p>
+                            <h3 class="text-xl font-bold text-[#3A5A40] mt-1">抵達池上</h3>
+                            <p class="text-gray-600 mt-2">列車抵達以稻米聞名的池上鄉，象徵著山嵐號的旅程告一段落。</p>
+                            <div class="mt-4 bg-green-50 p-4 rounded-lg border border-green-200">
+                                <h4 class="font-semibold text-green-800">在地推薦</h4>
+                                <p class="text-green-700 text-sm mt-1">抵達池上後，您可以步行至**池上飯包故事館**，參觀懷舊的車站，並享用美味的池上便當作為午餐。</p>
+                                <h4 class="font-semibold text-green-800 mt-4">交通路線建議 (自行車)</h4>
+                                <ul class="list-disc list-inside text-green-700 space-y-2 mt-2">
+                                    <li>**租車地點**：出池上火車站後，正對面就有多家自行車租借店，可依您的喜好選擇電動或非電動車。</li>
+                                    <li>**第一站：大坡池**：租好車後，騎上**中正路**（車站前的大路），往右（也就是往北）騎一小段路，大約 $3-5$ 分鐘即可抵達**大坡池**的入口。</li>
+                                    <li>**第二站：伯朗大道**：在大坡池遊覽後，回到中正路，往南（往左）騎，經過火車站。</li>
+                                    <li>**第三站：伯朗大道入口**：繼續騎乘約 $10-15$ 分鐘後，會看到池上飯包故事館對面的**大觀樓**，在這裡右轉進入**慶豐路**。</li>
+                                    <li>**第四站：金城武樹**：沿著慶豐路騎約 $5-10$ 分鐘，即可抵達**伯朗大道**的入口。進入後沿著路騎到最底就會看到著名的**金城武樹**。</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item mb-10 relative">
+                            <div class="absolute -left-[43px] top-1.5 text-2xl">🚌</div>
+                            <p class="font-semibold text-sm text-[#A08C75]">午後時段</p>
+                            <h3 class="text-xl font-bold text-[#3A5A40] mt-1">巴士啟程</h3>
+                            <p class="text-gray-600 mt-2">在池上集合後，搭乘巴士準備返回台北。沿途將欣賞東部山海景觀。</p>
+                        </div>
+
+                        <!-- UPDATED: Return journey rest stop with options and general time -->
+                        <div class="timeline-item mb-10 relative">
+                            <div class="absolute -left-[43px] top-1.5 text-2xl">☕</div>
+                            <p class="font-semibold text-sm text-[#A08C75]">傍晚時段</p>
+                            <h3 class="text-xl font-bold text-[#3A5A40] mt-1">回程休息站</h3>
+                            <p class="text-gray-600 mt-2">回程巴士會依當天路況，安排在**台泥DAKA園區**或**蘇澳服務區**停留休息，讓您稍作歇息。</p>
+                        </div>
+
+                         <div class="timeline-item relative">
+                            <div class="absolute -left-[43px] top-1.5 text-2xl">👋</div>
+                            <p class="font-semibold text-sm text-[#A08C75]">預計傍晚時段</p>
+                            <h3 class="text-xl font-bold text-[#3A5A40] mt-1">抵達台北，旅程結束</h3>
+                            <p class="text-gray-600 mt-2">巴士預計傍晚抵達台北，實際時間將依當天交通狀況調整，帶著滿滿的美好回憶，結束這趟精彩的兩天一夜花蓮之旅。**此行程不含第二天晚餐**。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="content-notes" class="day-content hidden">
+                    <div class="p-6 rounded-lg bg-gray-50 border border-gray-200">
+                        <h2 class="text-2xl font-bold text-[#3A5A40] mb-4">旅行小提醒與注意事項</h2>
+                        
+                        <div class="grid grid-cols-1 gap-8">
+                            <div>
+                                <h3 class="text-xl font-semibold text-[#577A5E] mb-2">建議攜帶物品</h3>
+                                <ul class="list-disc list-inside text-gray-600 space-y-1">
+                                    <li>個人證件、藥品、盥洗用品與毛巾。</li>
+                                    <li>輕便衣物、舒適好走的鞋子。</li>
+                                    <li>防曬用品、雨具及薄外套。</li>
+                                    <li>行動電源與保溫水瓶。</li>
+                                </ul>
+                            </div>
+                            
+                            <div>
+                                <h3 class="text-xl font-semibold text-[#577A5E] mb-2">行前注意事項</h3>
+                                <ul class="list-disc list-inside text-gray-600 space-y-1">
+                                    <li>**準時報到**：請提早抵達，行程時間可能因交通調整。</li>
+                                    <li>**注意安全**：隨時保管好個人貴重物品，並注意自身安全。</li>
+                                    <li>**氣候評估**：十月初氣候涼爽，但建議攜帶雨具及薄外套，並留意天氣預報。</li>
+                                </ul>
+                            </div>
+
+                            <!-- NEW: Costs not included section added -->
+                            <div>
+                                <h3 class="text-xl font-semibold text-[#577A5E] mb-2">費用不含</h3>
+                                <ul class="list-disc list-inside text-gray-600 space-y-1">
+                                    <li>旅程中的午餐與晚餐</li>
+                                    <li>個人消費與自費行程</li>
+                                    <li>住宿小費</li>
+                                    <li>其他未提及費用</li>
+                                    <li>**自備飲用水**</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+            </main>
+        </div>
+    </div>
+
+    <script>
+        const btnDay1 = document.getElementById('btn-day1');
+        const btnDay2 = document.getElementById('btn-day2');
+        const btnNotes = document.getElementById('btn-notes');
+        const contentDay1 = document.getElementById('content-day1');
+        const contentDay2 = document.getElementById('content-day2');
+        const contentNotes = document.getElementById('content-notes');
+        const selectors = [btnDay1, btnDay2, btnNotes];
+        const contents = [contentDay1, contentDay2, contentNotes];
+
+        function setActiveDay(selectedBtn, activeContent) {
+            selectors.forEach(btn => {
+                btn.classList.remove('active-day');
+                btn.classList.add('inactive-day');
+            });
+            selectedBtn.classList.add('active-day');
+            selectedBtn.classList.remove('inactive-day');
+
+            contents.forEach(content => content.classList.add('hidden'));
+            activeContent.classList.remove('hidden');
+        }
+
+        btnDay1.addEventListener('click', () => {
+            setActiveDay(btnDay1, contentDay1);
+        });
+
+        btnDay2.addEventListener('click', () => {
+            setActiveDay(btnDay2, contentDay2);
+        });
+
+        btnNotes.addEventListener('click', () => {
+            setActiveDay(btnNotes, contentNotes);
+        });
+    </script>
+</body>
+</html>
