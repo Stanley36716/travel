@@ -9,9 +9,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
     <!-- Chosen Palette: Earthy Green & Warm Sand -->
-    <!-- Application Structure Plan: A tab-based, single-page application. A persistent sidebar navigation allows users to switch between four main content views: Day 1 Itinerary, Evening Itinerary, Day 2 Itinerary, and Travel Reminders. This structure is chosen for its clarity, preventing users from getting lost in a long scroll. It's highly intuitive and mobile-friendly, as the sidebar navigation can stack cleanly on smaller screens. The 'Evening Itinerary' section consolidates the dinner and shopping activities into a single chronological timeline for improved flow. -->
-    <!-- Visualization & Content Choices: The primary data is the travel schedule. Goal: Organize/Inform/Compare. Method: An interactive vertical timeline built with HTML and styled with Tailwind CSS is used for all main schedules. The 'Evening' tab uses this timeline to present the merged dinner and shopping sequence chronologically. Interaction: JavaScript-powered buttons toggle the visibility of the different content sections. -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         body {
             font-family: 'Inter', 'Noto Sans TC', sans-serif;
@@ -46,6 +43,15 @@
             font-weight: 600;
             color: #3A5A40;
         }
+        .map-link {
+            color: #577A5E;
+            font-weight: 500;
+            text-decoration: underline;
+            transition: color 0.2s;
+        }
+        .map-link:hover {
+            color: #3A5A40;
+        }
     </style>
 </head>
 <body class="antialiased text-gray-800">
@@ -55,6 +61,7 @@
             <h1 class="text-3xl md:text-4xl font-bold text-[#3A5A40]">花蓮山嵐號・夢幻二日遊</h1>
             <p class="text-md text-gray-500 mt-2">您的專屬互動行程表 (10/3 - 10/4)</p>
             <div class="mt-4 p-3 bg-[#E6F3E9] rounded-lg inline-block text-sm shadow-md">
+                <!-- 領隊電話已移除 +886 -->
                 <p class="font-semibold text-[#3A5A40]">領隊資訊：張玲玲小姐 (電話：0917299039)</p>
             </div>
         </header>
@@ -81,27 +88,27 @@
                             <div class="absolute -left-[43px] top-1.5 text-2xl">🚌</div>
                             <p class="font-semibold text-sm text-[#A08C75]">08:00</p>
                             <h3 class="text-xl font-bold text-[#3A5A40] mt-1">啟程出發</h3>
-                            <p class="text-gray-600 mt-2">於台北火車站/北二門/雄獅站前門市集合 (雄獅站前門市/第5區集合)。搭乘舒適的旅遊專車，開始愉快的旅程。</p>
+                            <p class="text-gray-600 mt-2">於<a href="https://www.google.com/maps/search/?api=1&query=%E5%8F%B0%E5%8C%97%E7%81%AB%E8%BB%8A%E7%AB%99%20%E9%9B%84%E7%8D%85%E7%AB%99%E5%89%8D%E9%96%80%E5%B8%82" target="_blank" class="map-link">台北火車站/北二門/雄獅站前門市 🔗</a>集合 (雄獅站前門市/第5區集合)。搭乘舒適的旅遊專車，開始愉快的旅程。</p>
                         </div>
                         
                         <div class="timeline-item mb-10 relative">
                             <div class="absolute -left-[43px] top-1.5 text-2xl">☕</div>
                             <p class="font-semibold text-sm text-[#A08C75]">傍晚時段</p>
                             <h3 class="text-xl font-bold text-[#3A5A40] mt-1">蘇澳服務區休息</h3>
-                            <p class="text-gray-600 mt-2">旅途中第一個休息站，讓您下車活動筋骨、上洗手間，或購買零食與飲料。</p>
+                            <p class="text-gray-600 mt-2">於<a href="https://www.google.com/maps/search/?api=1&query=%E8%98%87%E6%BE%B3%E6%9C%8D%E5%8B%99%E5%8D%80" target="_blank" class="map-link">蘇澳服務區 🔗</a>休息。讓您下車活動筋骨、上洗手間，或購買零食與飲料。</p>
                         </div>
 
                         <div class="timeline-item mb-10 relative">
                             <div class="absolute -left-[43px] top-1.5 text-2xl">🚶‍♂️</div>
                             <p class="font-semibold text-sm text-[#A08C75]">11:00 - 13:00</p>
                             <h3 class="text-xl font-bold text-[#3A5A40] mt-1">新城老街散策</h3>
-                            <p class="text-gray-600 mt-2">抵達充滿懷舊氛圍的新城老街，此處為午餐自理時間，您可以自由探索，品嚐在地小吃。</p>
+                            <p class="text-gray-600 mt-2">抵達充滿懷舊氛圍的<a href="https://www.google.com/maps/search/?api=1&query=%E6%96%B0%E5%9F%8E%E8%80%81%E8%A1%97" target="_blank" class="map-link">新城老街 🔗</a>，此處為午餐自理時間，您可以自由探索，品嚐在地小吃。</p>
                             <div class="mt-4 bg-green-50 p-4 rounded-lg border border-green-200">
                                 <h4 class="font-semibold text-green-800">在地推薦</h4>
                                 <ul class="list-disc list-inside text-green-700 text-sm mt-2 space-y-1">
-                                    <li>佳興冰果室：檸檬汁清涼解渴，是必嚐的好滋味。</li>
-                                    <li>練習曲文創咖啡：在老屋裡享受一杯香醇咖啡，感受文藝氣息。</li>
-                                    <li>新城照相館：充滿歷史感的特色建築，適合拍照留念。</li>
+                                    <li><a href="https://www.google.com/maps/search/?api=1&query=%E4%BD%B3%E8%88%88%E5%86%B0%E6%9E%9C%E5%AE%A4" target="_blank" class="map-link">佳興冰果室 🔗</a>：檸檬汁清涼解渴，是必嚐的好滋味。</li>
+                                    <li><a href="https://www.google.com/maps/search/?api=1&query=%E7%B7%B4%E7%BF%92%E6%9B%B2%E6%96%87%E5%89%B5%E5%92%96%E5%95%A1" target="_blank" class="map-link">練習曲文創咖啡 🔗</a>：在老屋裡享受一杯香醇咖啡，感受文藝氣息。</li>
+                                    <li><a href="https://www.google.com/maps/search/?api=1&query=%E6%96%B0%E5%9F%8E%E7%85%A7%E7%9B%B8%E9%A4%A8" target="_blank" class="map-link">新城照相館 🔗</a>：充滿歷史感的特色建築，適合拍照留念。</li>
                                 </ul>
                             </div>
                         </div>
@@ -110,14 +117,14 @@
                             <div class="absolute -left-[43px] top-1.5 text-2xl">🏯</div>
                             <p class="font-semibold text-sm text-[#A08C75]">13:30 - 14:30</p>
                             <h3 class="text-xl font-bold text-[#3A5A40] mt-1">將軍府文創園區</h3>
-                            <p class="text-gray-600 mt-2">參觀日式宿舍群改建的文創園區，感受濃厚的歷史與藝術氣息，是拍照留念的好地方。</p>
+                            <p class="text-gray-600 mt-2">參觀日式宿舍群改建的<a href="https://www.google.com/maps/search/?api=1&query=%E5%B0%87%E8%BB%8D%E5%BA%9C%E6%96%87%E5%89%B5%E5%9C%92%E5%8D%80" target="_blank" class="map-link">將軍府文創園區 🔗</a>，感受濃厚的歷史與藝術氣息，是拍照留念的好地方。</p>
                         </div>
                         
                         <div class="timeline-item mb-10 relative">
                             <div class="absolute -left-[43px] top-1.5 text-2xl">🏨</div>
                             <p class="font-semibold text-sm text-[#A08C75]">15:00</p>
                             <h3 class="text-xl font-bold text-[#3A5A40] mt-1">入住花蓮潔西艾美酒店</h3>
-                            <p class="text-gray-600 mt-2">辦理入住手續，您可以在晚餐前的時光，享受飯店的豪華設施，稍作休息與放鬆。</p>
+                            <p class="text-gray-600 mt-2">辦理入住手續，入住<a href="https://www.google.com/maps/search/?api=1&query=%E8%8A%B1%E8%93%AE%E6%BD%94%E8%A5%BF%E8%89%BE%E7%BE%8E%E9%85%92%E5%BA%97" target="_blank" class="map-link">花蓮潔西艾美酒店 🔗</a>。您可以在晚餐前的時光，享受飯店的豪華設施，稍作休息與放鬆。</p>
                         </div>
 
                         <div class="timeline-item relative">
@@ -145,29 +152,28 @@
                                 <div class="absolute -left-[43px] top-1.5 text-2xl">🥟</div>
                                 <p class="font-semibold text-sm text-[#A08C75]">18:00 - 18:45</p>
                                 <h3 class="text-xl font-bold text-[#3A5A40] mt-1">美食接力 (一)：周家蒸餃</h3>
-                                <p class="text-gray-600 mt-2"><strong>第一站：周家蒸餃 (公正街)</strong>。建議先點一籠蒸餃或小籠包，快速補充能量。兩家名店非常靠近，步行即可輕鬆抵達。</p>
+                                <p class="text-gray-600 mt-2"><strong>第一站：<a href="https://www.google.com/maps/search/?api=1&query=%E5%91%A8%E5%AE%B6%E8%92%B8%E9%A4%83%20%E5%85%AC%E6%AD%A3%E8%A1%97" target="_blank" class="map-link">周家蒸餃 (公正街) 🔗</a></strong>。建議先點一籠蒸餃或小籠包，快速補充能量。兩家名店非常靠近，步行即可輕鬆抵達。</p>
                             </div>
 
                             <div class="timeline-item mb-10 relative">
                                 <div class="absolute -left-[43px] top-1.5 text-2xl">🍲</div>
                                 <p class="font-semibold text-sm text-[#A08C75]">18:45 - 19:30</p>
                                 <h3 class="text-xl font-bold text-[#3A5A40] mt-1">美食接力 (二)：液香扁食</h3>
-                                <p class="text-gray-600 mt-2"><strong>第二站：液香扁食 (信義街)</strong>。主攻招牌扁食，享受花蓮在地Q彈的風味。</p>
+                                <p class="text-gray-600 mt-2"><strong>第二站：<a href="https://www.google.com/maps/search/?api=1&query=%E6%B6%B2%E9%A6%99%E6%89%81%E9%A3%9F%20%E4%BF%A1%E7%BE%A9%E8%A1%97" target="_blank" class="map-link">液香扁食 (信義街) 🔗</a></strong>。主攻招牌扁食，享受花蓮在地Q彈的風味。</p>
                             </div>
 
                             <div class="timeline-item mb-10 relative">
                                 <div class="absolute -left-[43px] top-1.5 text-2xl">🛍️</div>
                                 <p class="font-semibold text-sm text-[#A08C75]">19:30 - 21:00</p>
                                 <h3 class="text-xl font-bold text-[#3A5A40] mt-1">商圈散步與伴手禮採買</h3>
-                                <p class="text-gray-600 mt-2">在中華路/中山路商圈散步，可順道買杯 <strong>廟口紅茶</strong> 或前往 <strong>公正包子 (新址仁愛街)</strong> 買個甜點。此時段可鎖定伴手禮店：</p>
+                                <p class="text-gray-600 mt-2">在中華路/中山路商圈散步，可順道買杯 <a href="https://www.google.com/maps/search/?api=1&query=%E5%BB%9F%E5%8F%A3%E7%B4%85%E8%8C%B6" target="_blank" class="map-link">廟口紅茶 🔗</a> 或前往 <a href="https://www.google.com/maps/search/?api=1&query=%E5%85%AC%E6%AD%A3%E5%8C%85%E5%AD%90%20%E4%BB%81%E6%84%9B%E8%A1%97" target="_blank" class="map-link">公正包子 (新址仁愛街) 🔗</a> 買個甜點。此時段可鎖定伴手禮店：</p>
                                 <div class="mt-4 bg-sky-50 p-4 rounded-lg border border-sky-200">
                                     <h4 class="font-semibold text-sky-800">必買伴手禮清單 (皆位於主要商圈，方便步行採買)</h4>
-                                    <!-- 清單已更新，確保所有店家都位於市區商圈且滿足高評價要求 -->
                                     <ul class="list-disc list-inside text-sky-700 text-sm mt-2 space-y-1">
-                                        <li><strong>曾記麻糬 (Tsang Kee Mochi)</strong>：花蓮必買名產，中山路/中華路上有多家分店，口味眾多，建議購買現做麻糬。</li>
-                                        <li><strong>花蓮文旦酥 (Hualien Pomelo Dessert)</strong>：位於中山路上，特色是柚子主題商品，健康且具在地特色。</li>
-                                        <li><strong>豐興餅舖 (Feng Hsing Bakery)</strong>：老字號餅舖，推薦招牌小月餅和艾草麻糬，在中華路上有分店。</li>
-                                        <li><strong>新味醬油 (Hsinwei Soy Sauce)</strong>：位於博愛街，是市區商圈步行可達範圍，推薦獲獎的鳳梨醬油，獨具風味。</li>
+                                        <li><strong><a href="https://www.google.com/maps/search/?api=1&query=%E6%9B%BE%E8%A8%98%E9%BA%BB%E7%B3%A3%20%E4%B8%AD%E5%B1%B1%E8%B7%AF" target="_blank" class="map-link">曾記麻糬 (Tsang Kee Mochi) 🔗</a></strong>：花蓮必買名產，中山路/中華路上有多家分店，建議購買現做麻糬。</li>
+                                        <li><strong><a href="https://www.google.com/maps/search/?api=1&query=%E8%8A%B1%E8%93%AE%E6%96%87%E6%97%A6%E9%85%A5" target="_blank" class="map-link">花蓮文旦酥 (Hualien Pomelo Dessert) 🔗</a></strong>：位於中山路上，特色是柚子主題商品，健康且具在地特色。</li>
+                                        <li><strong><a href="https://www.google.com/maps/search/?api=1&query=%E8%B1%90%E8%88%88%E9%A4%BC%E8%88%96" target="_blank" class="map-link">豐興餅舖 (Feng Hsing Bakery) 🔗</a></strong>：老字號餅舖，推薦招牌小月餅和艾草麻糬，在中華路上有分店。</li>
+                                        <li><strong><a href="https://www.google.com/maps/search/?api=1&query=%E6%96%B0%E5%91%B3%E9%86%AC%E6%B2%B9%20%E5%8D%9A%E6%84%9B%E8%A1%97" target="_blank" class="map-link">新味醬油 (Hsinwei Soy Sauce) 🔗</a></strong>：位於博愛街，推薦獲獎的鳳梨醬油，獨具風味。</li>
                                     </ul>
                                 </div>
                             </div>
@@ -177,9 +183,9 @@
                                 <h3 class="text-xl font-bold text-[#3A5A40] mt-1">夜間彈性活動 (步行20分鐘內)</h3>
                                 <p class="text-gray-600 mt-2">這幾個地點都位於市區核心，從中華路商圈步行 20 分鐘內可輕鬆抵達，請依體力自由選擇：</p>
                                 <ul class="list-disc list-inside text-gray-600 text-sm mt-2 space-y-1 ml-4">
-                                    <li><strong>東大門夜市</strong>：步行約 15-20 分鐘。可享受花蓮最大夜市的熱鬧氛圍。</li>
-                                    <li><strong>舊鐵道文化商圈</strong>：舊鐵道兩旁有許多文創小店，夜晚點燈後氣氛極佳 (步行約 5-10 分鐘)。</li>
-                                    <li><strong>花蓮文創園區</strong>：日式建築群，夜晚燈光柔和、適合散步或找間酒吧小酌 (步行約 10-15 分鐘)。</li>
+                                    <li><strong><a href="https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E5%A4%A7%E9%96%80%E5%A4%9C%E5%B8%82" target="_blank" class="map-link">東大門夜市 🔗</a></strong>：步行約 15-20 分鐘。可享受花蓮最大夜市的熱鬧氛圍。</li>
+                                    <li><strong><a href="https://www.google.com/maps/search/?api=1&query=%E8%8A%B1%E8%93%AE%E8%88%8A%E9%90%B5%E9%81%93%E6%96%87%E5%8C%96%E5%95%86%E5%9C%88" target="_blank" class="map-link">舊鐵道文化商圈 🔗</a></strong>：舊鐵道兩旁有許多文創小店，夜晚點燈後氣氛極佳 (步行約 5-10 分鐘)。</li>
+                                    <li><strong><a href="https://www.google.com/maps/search/?api=1&query=%E8%8A%B1%E8%93%AE%E6%96%87%E5%89%B5%E5%9C%92%E5%8D%80" target="_blank" class="map-link">花蓮文創園區 🔗</a></strong>：日式建築群，夜晚燈光柔和、適合散步或找間酒吧小酌 (步行約 10-15 分鐘)。</li>
                                 </ul>
                             </div>
 
@@ -201,7 +207,7 @@
                             <div class="absolute -left-[43px] top-1.5 text-2xl">🏨</div>
                             <p class="font-semibold text-sm text-[#A08C75]">上午</p>
                             <h3 class="text-xl font-bold text-[#3A5A40] mt-1">飯店出發</h3>
-                            <p class="text-gray-600 mt-2">在飯店享用豐盛的早餐後，辦理退房手續，準備前往花蓮火車站。</p>
+                            <p class="text-gray-600 mt-2">在飯店享用豐盛的早餐後，辦理退房手續，準備前往<a href="https://www.google.com/maps/search/?api=1&query=%E8%8A%B1%E8%93%AE%E7%81%AB%E8%BB%8A%E7%AB%99" target="_blank" class="map-link">花蓮火車站 🔗</a>。</p>
                         </div>
                         
                         <div class="timeline-item mb-10 relative">
@@ -215,7 +221,7 @@
                             <div class="absolute -left-[43px] top-1.5 text-2xl">🌄</div>
                             <p class="font-semibold text-sm text-[#A08C75]">10:01 - 13:21</p>
                             <h3 class="text-xl font-bold text-[#3A5A40] mt-1">山嵐號列車體驗</h3>
-                            <p class="text-gray-600 mt-2">本日的重頭戲！在列車上您將享用由世界冠軍主廚設計的私廚料理，以及「九日良田」的精緻茶點。沿途欣賞花東縱谷的壯麗風光，並體驗車上的香氛共鳴室。</p>
+                            <p class="text-gray-600 mt-2">列車沿途停靠<a href="https://www.google.com/maps/search/?api=1&query=%E5%A3%BD%E8%B1%90%E7%81%AB%E8%BB%8A%E7%AB%99" target="_blank" class="map-link">壽豐 🔗</a>、<a href="https://www.google.com/maps/search/?api=1&query=%E7%8E%89%E9%87%8C%E7%81%AB%E8%BB%8A%E7%AB%99" target="_blank" class="map-link">玉里 🔗</a>，最終抵達<a href="https://www.google.com/maps/search/?api=1&query=%E6%B1%A0%E4%B8%8A%E7%81%AB%E8%BB%8A%E7%AB%99" target="_blank" class="map-link">池上 🔗</a>。在車上享用世界冠軍主廚設計料理，並欣賞花東縱谷的壯麗風光。</p>
                             <div class="mt-4 overflow-x-auto">
                                 <table class="w-full text-sm train-table">
                                     <thead>
@@ -259,9 +265,9 @@
                             <div class="mt-4 bg-lime-50 p-4 rounded-lg border border-lime-200">
                                 <h4 class="font-semibold text-lime-800">在地推薦</h4>
                                 <ul class="list-disc list-inside text-lime-700 text-sm mt-2 space-y-1">
-                                    <li><strong>池上米伴手禮採購</strong>：池上車站前有多家販售正宗池上米及米餅乾的店家。</li>
-                                    <li><strong>伯朗大道 & 金城武樹</strong>：租借自行車，在金黃稻浪中享受悠閒時光。</li>
-                                    <li><strong>大坡池</strong>：風景優美的天然濕地，適合散步或騎車環湖。</li>
+                                    <li><strong><a href="https://www.google.com/maps/search/?api=1&query=%E6%B1%A0%E4%B8%8A%E7%81%AB%E8%BB%8A%E7%AB%99" target="_blank" class="map-link">池上米伴手禮採購 🔗</a></strong>：池上車站前有多家販售正宗池上米及米餅乾的店家。</li>
+                                    <li><strong><a href="https://www.google.com/maps/search/?api=1&query=%E6%B1%A0%E4%B8%8A%E3%80%80%E4%BC%AF%E6%9C%97%E5%A4%A7%E9%81%93" target="_blank" class="map-link">伯朗大道 & 金城武樹 🔗</a></strong>：租借自行車，在金黃稻浪中享受悠閒時光。</li>
+                                    <li><strong><a href="https://www.google.com/maps/search/?api=1&query=%E5%A4%A7%E5%9D%A1%E6%B1%A0" target="_blank" class="map-link">大坡池 🔗</a></strong>：風景優美的天然濕地，適合散步或騎車環湖。</li>
                                 </ul>
                             </div>
                         </div>
@@ -270,7 +276,7 @@
                             <div class="absolute -left-[43px] top-1.5 text-2xl">🚌</div>
                             <p class="font-semibold text-sm text-[#A08C75]">15:00 - 19:30</p>
                             <h3 class="text-xl font-bold text-[#3A5A40] mt-1">巴士賦歸</h3>
-                            <p class="text-gray-600 mt-2">於池上集合，搭乘巴士返回台北。途中會視路況於<strong>台泥DAKA園區</strong>或<strong>蘇澳服務區</strong>休息。預計於晚間抵達台北，結束愉快的旅程。</p>
+                            <p class="text-gray-600 mt-2">於池上集合，搭乘巴士返回台北。途中會視路況於<a href="https://www.google.com/maps/search/?api=1&query=%E5%8F%B0%E6%B3%A5DAKA%E5%9C%92%E5%8D%80" target="_blank" class="map-link">台泥DAKA園區 🔗</a>或<a href="https://www.google.com/maps/search/?api=1&query=%E8%98%87%E6%BE%B3%E6%9C%8D%E5%8B%99%E5%8D%80" target="_blank" class="map-link">蘇澳服務區 🔗</a>休息。預計於晚間抵達台北，結束愉快的旅程。</p>
                         </div>
                     </div>
                 </div>
@@ -361,4 +367,3 @@
 
 </body>
 </html>
-
